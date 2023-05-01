@@ -1,0 +1,13 @@
+name: lock_timer
+
+version: 0.0.1
+
+dependencies:
+  args: any
+
+dev_dependencies:
+  test: any
+  pedantic: any
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
