@@ -19,15 +19,15 @@ abstract class SinglePositionalArgCommand extends Command<void> {
   @override
   Future<void> run() async {
     _checkArgCount();
-    await runWithSingleArg(argResults.rest[0]);
+    await runWithSingleArg(argResults!.rest[0]);
   }
 
   void _checkArgCount() {
-    if (argResults.rest.length != 1) {
+    if (argResults?.rest.length != 1) {
       print(usage);
       throw Exception(
         'Exactly 1 argument <$argName> expected, '
-        '${argResults.rest.length} provided.',
+        '${argResults?.rest.length} provided.',
       );
     }
   }

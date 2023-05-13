@@ -11,4 +11,4 @@ dev_dependencies:
   pedantic: any
 
 environment:
-  sdk: ">=2.2.2 <3.0.0"
+  sdk: ">=2.19.2 <4.0.0"
