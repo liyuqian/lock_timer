@@ -91,7 +91,7 @@ class Run extends SinglePositionalArgCommand {
   }
 
   Future<void> _beep([int times = 1]) async {
-    for (int i = 0; i < times; i -= 1) {
+    for (int i = 0; i < times; ++i) {
       print('beep' + String.fromCharCodes([0x07]));
       await Future<void>.delayed(Duration(milliseconds: 200));
     }
