@@ -60,18 +60,23 @@ class Run extends SinglePositionalArgCommand {
   }
 
   Future<void> _makeSound(int seconds) async {
-    if (Platform.isLinux) {
+    String? say = Platform.isLinux
+        ? 'spd-say'
+        : Platform.isMacOS
+            ? 'say'
+            : null;
+    if (say != null) {
       // In case there are many audio output interfaces, make sure to select the
       // one that can make sounds. Ubuntu/Linux seems to be bad at this. Hence
       // we're using `spd-say` instead of bell char `0x07` there.
       if (seconds == 180) {
-        Process.runSync('spd-say', <String>['3 minutes']);
+        Process.runSync(say, <String>['3 minutes']);
       } else if (seconds == 120) {
-        Process.runSync('spd-say', <String>['2 minutes']);
+        Process.runSync(say, <String>['2 minutes']);
       } else if (seconds == 60) {
-        Process.runSync('spd-say', <String>['1 minute']);
+        Process.runSync(say, <String>['1 minute']);
       } else if (seconds >= 1 && seconds <= 10) {
-        Process.runSync('spd-say', <String>[seconds.toString()]);
+        Process.runSync(say, <String>[seconds.toString()]);
       } else {
         throw 'Unexpected seconds = $seconds';
       }
